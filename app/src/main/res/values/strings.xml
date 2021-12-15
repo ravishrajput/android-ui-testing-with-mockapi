@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">android-ui-testing-with-mockapi</string>
+    <string name="error_message">Something Went Wrong</string>
+    <string name="followers">Followers: %d</string>
+</resources>
