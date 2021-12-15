@@ -64,14 +64,14 @@ class HomeActivity : AppCompatActivity() {
         binding.errorMessage.visibility = View.VISIBLE
     }
 
-    private fun updateUI(user: User) {
+    private fun updateUI(usersList: List<User>) {
         with(binding) {
-            name.text = user.name
+            /*name.text = user.name
             location.text = user.location
             followers.text = getString(R.string.followers, user.followers)
             Glide.with(this@HomeActivity).load(user.avatar_url)
                 .placeholder(R.drawable.ic_launcher_background)
-                .into(image)
+                .into(image)*/
         }
     }
 }

@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ApiRepository {
 
-    suspend fun getUser(): Flow<User>
+    suspend fun getUser(): Flow<List<User>>
 }

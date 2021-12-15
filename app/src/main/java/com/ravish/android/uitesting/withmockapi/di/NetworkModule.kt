@@ -27,14 +27,12 @@ object NetworkModule {
             })
         }
         connectTimeout(TIMEOUT, TimeUnit.SECONDS)
-        writeTimeout(TIMEOUT, TimeUnit.SECONDS)
-        readTimeout(TIMEOUT, TimeUnit.SECONDS)
     }.build()
 
     @Provides
     @Singleton
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder().apply {
-        baseUrl("https://api.github.com")
+        baseUrl("http://api.ravishrajput.com")
         client(okHttpClient)
         addConverterFactory(MoshiConverterFactory.create())
     }.build()

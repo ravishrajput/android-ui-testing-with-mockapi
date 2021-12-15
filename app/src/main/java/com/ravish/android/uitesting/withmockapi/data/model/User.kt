@@ -1,11 +1,15 @@
 package com.ravish.android.uitesting.withmockapi.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class User(
-    val avatar_url: String,
-    var followers: Int,
     val id: Int,
-    var location: String,
-    var name: String,
-    val public_repos: Int,
-    val url: String
-)
+    val name: String,
+    val username: String,
+    var email: String,
+    var imageUrl: String
+): Parcelable
+
+data class UsersData(val users: List<User>)

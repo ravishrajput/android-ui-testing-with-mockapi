@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.flow
 
 class ApiRepositoryImpl(private val services: ApiServices) : ApiRepository {
 
-    override suspend fun getUser(): Flow<User> = flow {
-        emit(services.getUser())
+    override suspend fun getUser(): Flow<List<User>> = flow {
+        emit(services.getUser().users)
     }
 }
