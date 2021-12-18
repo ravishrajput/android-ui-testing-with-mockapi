@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Dummy User 1",
+      "username": "dummyuser1",
+      "email": "dummy1@gmail.com",
+      "imageUrl": "none"
+    },
+    {
+      "id": 2,
+      "name": "Dummy User 2",
+      "username": "dummyuser2",
+      "email": "dummy2@gmail.com",
+      "imageUrl": "none"
+    },
+    {
+      "id": 3,
+      "name": "Dummy User 3",
+      "username": "dummyuser3",
+      "email": "dummy3@gmail.com",
+      "imageUrl": "none"
+    },
+    {
+      "id": 4,
+      "name": "Dummy User 4",
+      "username": "dummyuser4",
+      "email": "dummy1@gmail.com",
+      "imageUrl": "none"
+    },
+    {
+      "id": 5,
+      "name": "Dummy User 5",
+      "username": "dummyuser5",
+      "email": "dummy2@gmail.com",
+      "imageUrl": "none"
+    },
+    {
+      "id": 6,
+      "name": "Dummy User 6",
+      "username": "dummyuser6",
+      "email": "dummy3@gmail.com",
+      "imageUrl": "none"
+    }
+  ]
+}

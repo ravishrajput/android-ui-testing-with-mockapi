@@ -13,6 +13,25 @@ android {
         viewBinding true
     }
 
+    kapt {
+        correctErrorTypes = true
+    }
+
+    hilt {
+        enableTransformForLocalTests = true
+    }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/kotlin"
+            resources.srcDirs += "src/sharedTest/resources"
+        }
+        test {
+            java.srcDirs += "src/sharedTest/kotlin"
+            resources.srcDirs += "src/sharedTest/resources"
+        }
+    }
+
     defaultConfig {
         applicationId "com.ravish.android.uitesting.withmockapi"
         minSdk 21
@@ -20,10 +39,16 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.ravish.android.uitesting.withmockapi.hilt.CustomTestRunner"
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            testCoverageEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -35,6 +60,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+}
+
+kapt {
+    javacOptions {
+        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
     }
 }
 
@@ -65,6 +96,9 @@ dependencies {
 
     testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptTest "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     testImplementation "org.mockito:mockito-core:4.0.0"
     testImplementation "org.mockito:mockito-android:3.11.2"
