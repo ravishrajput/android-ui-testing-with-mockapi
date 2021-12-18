@@ -1,6 +1,7 @@
 package com.ravish.android.uitesting.withmockapi.di
 
 import androidx.viewbinding.BuildConfig
+import com.ravish.android.uitesting.withmockapi.data.network.AuthenticationInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,6 +27,7 @@ object NetworkModule {
                 level = HttpLoggingInterceptor.Level.BODY
             })
         }
+        addInterceptor(AuthenticationInterceptor())
         connectTimeout(TIMEOUT, TimeUnit.SECONDS)
     }.build()
 

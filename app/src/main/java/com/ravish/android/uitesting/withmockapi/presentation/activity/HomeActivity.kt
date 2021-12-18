@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
 import com.ravish.android.uitesting.withmockapi.R
 import com.ravish.android.uitesting.withmockapi.data.model.User
 import com.ravish.android.uitesting.withmockapi.databinding.ActivityHomeBinding
+import com.ravish.android.uitesting.withmockapi.presentation.adapter.UserListAdapter
 import com.ravish.android.uitesting.withmockapi.presentation.model.UIState
 import com.ravish.android.uitesting.withmockapi.presentation.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.collect
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-
+    private val userListAdapter: UserListAdapter by lazy { UserListAdapter() }
     private val homeViewModel: HomeViewModel? by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         observeFlowData()
+        initUI()
         homeViewModel?.loadUserData()
     }
 
@@ -51,6 +52,10 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun initUI() {
+        binding.rvUserList.adapter = userListAdapter
+    }
+
     private fun showProgress() {
         binding.progressBar.visibility = View.VISIBLE
     }
@@ -65,13 +70,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun updateUI(usersList: List<User>) {
-        with(binding) {
-            /*name.text = user.name
-            location.text = user.location
-            followers.text = getString(R.string.followers, user.followers)
-            Glide.with(this@HomeActivity).load(user.avatar_url)
-                .placeholder(R.drawable.ic_launcher_background)
-                .into(image)*/
-        }
+        userListAdapter.submitList(usersList)
     }
 }
