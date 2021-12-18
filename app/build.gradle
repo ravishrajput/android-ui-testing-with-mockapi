@@ -4,6 +4,50 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-parcelize'
+    id 'jacoco'
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+tasks.withType(Test) {
+    jacoco {
+        includeNoLocationClasses = true
+        excludes = ['jdk.internal.*']
+    }
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+
+    group = "reporting"
+    description = "genrate jacoco report"
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        html.destination = file("$project.buildDir/jacoco/")
+        xml.destination = file("$project.buildDir/jacoco/jacoco.xml")
+    }
+
+    def fileFilter = ['**/R.class',
+                      '**/R$*.class',
+                      '**/BuildConfig.*',
+                      '**/Manifest*.*',
+                      '**/*Test*.*',
+                      '**/*Application*.*',
+                      '**/*Activity*.*',
+                      '**/*Fragment*.*',
+                      '**/model/*.*',
+                      '**/di/*.*',
+                      '**/Delegates/*.*',
+                      '**/*Adapter*.*',
+                      'android/**/*.*']
+    def debugTree = fileTree(dir: "$project.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+
+    sourceDirectories.from = files([mainSrc])
+    classDirectories.from = files([debugTree])
+    executionData.from = fileTree(dir: project.buildDir, includes: ['**/testDebugUnitTest.exec'])
 }
 
 android {
