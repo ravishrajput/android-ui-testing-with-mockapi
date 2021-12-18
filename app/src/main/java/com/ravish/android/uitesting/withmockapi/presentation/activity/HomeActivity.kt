@@ -1,9 +1,9 @@
 package com.ravish.android.uitesting.withmockapi.presentation.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.ravish.android.uitesting.withmockapi.R
 import com.ravish.android.uitesting.withmockapi.data.model.User

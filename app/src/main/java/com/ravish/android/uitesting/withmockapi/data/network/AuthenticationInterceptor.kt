@@ -11,7 +11,7 @@ class AuthenticationInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val original: Request = chain.request()
 
-        val basic = Credentials.basic("","")
+        val basic = Credentials.basic("", "")
 
         val builder: Request.Builder = original.newBuilder()
             .header("Authorization", basic)

@@ -10,6 +10,6 @@ data class User(
     val username: String,
     var email: String,
     var imageUrl: String
-): Parcelable
+) : Parcelable
 
 data class UsersData(val users: List<User>)

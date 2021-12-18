@@ -6,8 +6,10 @@ import com.ravish.android.uitesting.withmockapi.data.model.User
 import com.ravish.android.uitesting.withmockapi.data.network.ApiRepository
 import com.ravish.android.uitesting.withmockapi.presentation.model.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
